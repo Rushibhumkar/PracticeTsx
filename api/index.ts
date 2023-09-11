@@ -1,13 +1,13 @@
 // import Message from './models/Message';
-const User = require('./models/User');
-// import express from 'express';
-// import bodyParser from 'body-parser';
-// import mongoose from 'mongoose';
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
 
 // const passport = require('passport');
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('bodyParser');
+const User = require('./models/User');
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const bodyParser = require('bodyParser');
 const LocalStrategy = require('passport-local');
 
 const app = express();
