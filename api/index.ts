@@ -1,9 +1,13 @@
 // import Message from './models/Message';
 const User = require('./models/User');
-import express from 'express';
+// import express from 'express';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
+
 // const passport = require('passport');
+const express = require('express');
+const mongoose = require('mongoose');
+// const bodyParser = require('bodyParser');
 const LocalStrategy = require('passport-local');
 
 const app = express();
@@ -38,11 +42,11 @@ app.listen(port, () => {
 // const User = require('./models/User');
 // const Message = require('./models/Message');
 
-app.get('/',(req:express.Request,res:express.Response)=>{
+app.get('/',(req:any,res:any)=>{
   res.send("working fine")
 })
 
-app.post('/register', (req:express.Request,res:express.Response) => {
+app.post('/register', (req:any,res:any) => {
   const {name, email, password, image} = req.body;
 
   // create new user object
