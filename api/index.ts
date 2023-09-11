@@ -1,5 +1,5 @@
-import Message from './models/Message';
-import User from './models/User';
+// import Message from './models/Message';
+const User = require('./models/User');
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
