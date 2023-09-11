@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native';
 import React from 'react';
-import {cartData} from '../assets/data';
+import {cartData} from '../../../assets/data';
 import CartOptions from './CartOptions';
 
 interface CartItem {
@@ -15,6 +15,7 @@ interface CartItem {
   title: string;
   description: string;
   image: any;
+  item: any;
 }
 
 const Cart: React.FC = ({navigation}: any) => {

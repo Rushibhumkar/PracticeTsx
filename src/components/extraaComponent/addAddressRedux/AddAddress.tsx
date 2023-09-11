@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import {addAddress} from './redux/actions/Action';
+import {addAddress} from '../../redux/actions/Action';
 import {useNavigation} from '@react-navigation/native';
 
 const AddAddress = () => {

@@ -40,3 +40,30 @@ export const cartData = [
     info: 'This is the information of fourth element',
   },
 ];
+
+export const Items = {
+  item1: {
+    id: '1',
+    name: 'shoe1',
+    image: require('../images/shoeImages/firstShoe.jpg'),
+    description: 'This is first description',
+  },
+  item2: {
+    id: '2',
+    name: 'shoe2',
+    image: require('../images/shoeImages/secondShoe.jpg'),
+    description: 'This is second description',
+  },
+  item3: {
+    id: '3',
+    name: 'shoe3',
+    image: require('../images/shoeImages/thirdShoe.jpg'),
+    description: 'This is third description',
+  },
+  item4: {
+    id: '4',
+    name: 'shoe4',
+    image: require('../images/shoeImages/firstShoe.jpg'),
+    description: 'This is fourth description',
+  },
+};

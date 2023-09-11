@@ -39,7 +39,7 @@ const CartOptions: React.FC<CartItem> = ({id, image, description, title}) => {
           }}>
           <TouchableOpacity
             style={{backgroundColor: 'green', borderRadius: 4, marginTop: 4}}
-            activeOpacity={0.2}>
+            activeOpacity={0.6}>
             <Text
               style={{
                 padding: 4,
@@ -58,7 +58,7 @@ const CartOptions: React.FC<CartItem> = ({id, image, description, title}) => {
               marginTop: 4,
               marginLeft: 6,
             }}
-            activeOpacity={0.2}>
+            activeOpacity={0.6}>
             <Text
               style={{
                 padding: 4,
@@ -77,7 +77,7 @@ const CartOptions: React.FC<CartItem> = ({id, image, description, title}) => {
               justifyContent: 'center',
               alignItems: 'center',
             }}
-            activeOpacity={0.2}
+            activeOpacity={0.6}
             onPress={() => setheartSelected(!heartSelected)}>
             <Image
               source={
@@ -96,7 +96,7 @@ const CartOptions: React.FC<CartItem> = ({id, image, description, title}) => {
         <TouchableOpacity
           onPress={() => navigation.navigate('CartDetails', {cartId: id})}
           style={{marginTop: 10}}
-          activeOpacity={0.2}>
+          activeOpacity={0.6}>
           <Text
             style={{
               fontSize: 14,
@@ -113,5 +113,3 @@ const CartOptions: React.FC<CartItem> = ({id, image, description, title}) => {
 };
 
 export default CartOptions;
-
-const styles = StyleSheet.create({});

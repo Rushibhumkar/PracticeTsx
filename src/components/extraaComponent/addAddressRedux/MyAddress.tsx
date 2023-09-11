@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, TouchableOpacity, FlatList} from 'react-native';
 import React, {useEffect} from 'react';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-import {deleteAddress} from './redux/actions/Action';
+import {deleteAddress} from '../../redux/actions/Action';
 let addressList = [];
 const MyAddress = () => {
   const navigation = useNavigation();

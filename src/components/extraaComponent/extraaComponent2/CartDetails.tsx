@@ -1,32 +1,35 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
-import {cartData} from '../assets/data';
+import {cartData} from '../../../assets/data';
+import {useDispatch} from 'react-redux';
+import {addToCart} from '../../redux/actions/Action';
 interface Props {
   navigation: any;
   route: any;
 }
 const CartDetails: React.FC<Props> = ({navigation, route}) => {
-  const id = route.params.cartId;
+  const id = route.params?.cartId;
   const selectedCart = cartData.find(element => {
     return id === element.id;
   });
+  const dispatch = useDispatch();
   const [heartSelected, setheartSelected] = useState<boolean>(false);
   return (
     <View style={{backgroundColor: '#fff', flex: 1, padding: 20}}>
       <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
         <View style={{flex: 4}}>
-          <Text style={{color: 'black'}}>{selectedCart.title}</Text>
-          <Text style={{color: 'black'}}>{selectedCart.id}</Text>
+          <Text style={{color: 'black'}}>{selectedCart?.title}</Text>
+          <Text style={{color: 'black'}}>{selectedCart?.id}</Text>
 
-          <Text style={{color: 'black'}}>{selectedCart.description}</Text>
-          <Text style={{color: 'black'}}>{selectedCart.rating}</Text>
-          <Text style={{color: 'black'}}>{selectedCart.faqs}</Text>
-          <Text style={{color: 'black'}}>{selectedCart.info}</Text>
-          <Text style={{color: 'black'}}>{selectedCart.reviews}</Text>
+          <Text style={{color: 'black'}}>{selectedCart?.description}</Text>
+          <Text style={{color: 'black'}}>{selectedCart?.rating}</Text>
+          <Text style={{color: 'black'}}>{selectedCart?.faqs}</Text>
+          <Text style={{color: 'black'}}>{selectedCart?.info}</Text>
+          <Text style={{color: 'black'}}>{selectedCart?.reviews}</Text>
         </View>
         <View style={{flex: 2}}>
           <Image
-            source={selectedCart.image}
+            source={selectedCart?.image}
             style={{height: 120, width: 120}}
           />
         </View>
@@ -39,7 +42,8 @@ const CartDetails: React.FC<Props> = ({navigation, route}) => {
             marginTop: 4,
             width: 60,
           }}
-          activeOpacity={0.2}>
+          activeOpacity={0.6}
+          onPress={() => dispatch(addToCart({}))}>
           <Text
             style={{
               padding: 4,
@@ -60,7 +64,7 @@ const CartDetails: React.FC<Props> = ({navigation, route}) => {
             marginLeft: 6,
             width: 80,
           }}
-          activeOpacity={0.2}>
+          activeOpacity={0.6}>
           <Text
             style={{
               padding: 4,
@@ -80,7 +84,7 @@ const CartDetails: React.FC<Props> = ({navigation, route}) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}
-          activeOpacity={0.2}
+          activeOpacity={0.6}
           onPress={() => setheartSelected(!heartSelected)}>
           <Image
             source={

@@ -5,17 +5,17 @@ import {
   DELETE_FROM_CART,
 } from '../ActionTypes';
 
-export const addToCart = (data: any) => ({
+export const addToCart = (item: any) => ({
   type: ADD_TO_CART,
-  payload: data,
+  payload: item,
 });
 export const deleteFromCart = (index: any) => ({
   type: DELETE_FROM_CART,
   payload: index,
 });
-export const addAddress = (data: any) => ({
+export const addAddress = (item: any) => ({
   type: ADD_ADDRESS,
-  payload: data,
+  payload: item,
 });
 export const deleteAddress = (index: any) => ({
   type: DELETE_ADDRESS,

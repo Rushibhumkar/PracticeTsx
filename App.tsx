@@ -2,13 +2,21 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {Provider} from 'react-redux';
 import MainNavigation from './MainNavigation';
-import {store} from './src/components/redux/store/Store';
-
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import store from './src/components/foodDelivery/redux/store';
+import StackNavigator from './chattingapp/StackNavigator';
 const App = () => {
   return (
-    <Provider store={store}>
-      <MainNavigation />
-    </Provider>
+    // <Provider store={store}>
+    //   <GestureHandlerRootView style={{flex: 1}}>
+    //     {/* <BottomSheet /> */}
+    //     {/* Other app content */}
+    //     <MainNavigation />
+    //   </GestureHandlerRootView>
+    // </Provider>
+    <>
+      <StackNavigator />
+    </>
   );
 };
 
