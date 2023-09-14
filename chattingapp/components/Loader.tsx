@@ -1,11 +1,24 @@
-import {StyleSheet, Text, View, Modal, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Modal,
+  Dimensions,
+  ActivityIndicator,
+  StatusBar,
+} from 'react-native';
 import React from 'react';
-
-const Loader = () => {
+interface Props {
+  visible: any;
+}
+const Loader: React.FC<Props> = ({visible}) => {
   return (
-    <Modal visible transparent>
+    <Modal visible={visible} transparent>
+      <StatusBar translucent={true} backgroundColor={'rgba(0,0,0,.6)'} />
       <View style={styles.modalView}>
-        <View style={styles.mainView}></View>
+        <View style={styles.mainView}>
+          <ActivityIndicator size={'large'} />
+        </View>
       </View>
     </Modal>
   );

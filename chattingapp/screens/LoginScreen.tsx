@@ -11,26 +11,44 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import firestore from '@react-native-firebase/firestore';
+import Loader from '../components/Loader';
+import AsyncStorate from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
+  const [visible, setVisible] = useState(false);
   const [password, setPassword] = useState('');
   const loginUser = () => {
+    setVisible(true);
     firestore()
       .collection('users')
       .where('email', '==', email)
       .get()
       .then((res: any) => {
+        setVisible(false);
         if (res.docs.length !== 0) {
           console.log(JSON.stringify(res.docs[0].data()));
+          goToNext(
+            res.docs[0].data().name,
+            res.docs[0].data().email,
+            res.docs[0].data().userId,
+          );
         } else {
           Alert.alert('User not found');
         }
       })
       .catch((err: any) => {
+        setVisible(false);
         console.log(`can't find data`, err);
         Alert.alert('User not found');
       });
+  };
+
+  const goToNext = async (name: any, email: any, userId: any) => {
+    await AsyncStorate.setItem('NAME', name);
+    await AsyncStorate.setItem('EMAIL', email);
+    await AsyncStorate.setItem('USERID', userId);
+    navigation.navigate('');
   };
   return (
     <View
@@ -163,6 +181,7 @@ const LoginScreen = ({navigation}: any) => {
             </TouchableOpacity>
           </View>
         </KeyboardAvoidingView>
+        <Loader visible={visible} />
       </SafeAreaView>
     </View>
   );
