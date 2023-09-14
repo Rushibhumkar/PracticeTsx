@@ -9,47 +9,59 @@ import {
   Alert,
   KeyboardAvoidingView,
   ScrollView,
+  ToastAndroid,
 } from 'react-native';
 import React, {useState} from 'react';
-import axios from 'axios';
-
+import firestore from '@react-native-firebase/firestore';
+import uuid from 'react-native-uuid';
 const RegisterScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
-  const [image, setImage] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [password, setPassword] = useState('');
-  const handleRegister = () => {
-    const user = {
-      name: name,
-      email: email,
-      password: password,
-      image: image,
-    };
-    // send POST request to backend API to register user
-    fetch('https://chatting-app-backend-0j9y.onrender.com/register', {
-      method: 'POST',
-      body: JSON.stringify(user),
-    })
-      .then(res => {
-        console.log(res);
-        Alert.alert(
-          'Registration successfull',
-          'You have been registered Successfully!',
-        );
-        setName('');
-        setPassword('');
-        setEmail('');
-        setImage('');
+  const userId: any = uuid.v4();
+  // console.log(userId);
+  const registerUser = () => {
+    firestore()
+      .collection('users')
+      .doc(userId)
+      .set({
+        name: name,
+        email: email,
+        password: password,
+        mobile: mobile,
+        userId: userId,
       })
-      .catch(err => {
-        Alert.alert(
-          'Registration Error',
-          'An error occurred while registering',
+      .then((res: any) => {
+        console.log('user Created');
+        ToastAndroid.showWithGravity(
+          'account created successfully!',
+          ToastAndroid.SHORT,
+          ToastAndroid.TOP,
         );
-        console.log('registration failed', err);
+        navigation.navigate('LoginScreen');
+      })
+      .catch((err: any) => {
+        console.log(err);
       });
   };
+  const validate = () => {
+    let isValid = true;
+    if (
+      name == '' ||
+      email == '' ||
+      mobile == '' ||
+      password == '' ||
+      confirmPassword == '' ||
+      confirmPassword !== password ||
+      password.length !== 6
+    ) {
+      isValid = false;
+    }
 
+    return isValid;
+  };
   return (
     <ScrollView
       style={{
@@ -108,6 +120,44 @@ const RegisterScreen = ({navigation}: any) => {
                 value={name}
                 onChangeText={text => setName(text)}
                 placeholder="Enter name..."
+                placeholderTextColor={'grey'}
+                style={{
+                  fontSize: 12,
+                  paddingHorizontal: 8,
+                  color: '#000',
+                  borderColor: 'grey',
+                  borderRadius: 8,
+                  borderWidth: 0.4,
+                }}
+              />
+            </View>
+          </View>
+          {/* <--------mobile--------> */}
+          <View
+            style={{
+              marginTop: 30,
+              marginHorizontal: 20,
+            }}>
+            <View>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontWeight: 'bold',
+                  color: '#000',
+                  position: 'absolute',
+                  top: -9,
+                  left: 8,
+                  zIndex: 10,
+                  backgroundColor: '#fff',
+                  paddingHorizontal: 4,
+                }}>
+                mobile
+              </Text>
+              <TextInput
+                value={mobile}
+                keyboardType="number-pad"
+                onChangeText={text => setMobile(text)}
+                placeholder="Enter Mobile..."
                 placeholderTextColor={'grey'}
                 style={{
                   fontSize: 12,
@@ -195,7 +245,7 @@ const RegisterScreen = ({navigation}: any) => {
               />
             </View>
           </View>
-          {/* <--------image--------> */}
+          {/* <--------confirmPassword--------> */}
           <View
             style={{
               marginTop: 30,
@@ -214,12 +264,12 @@ const RegisterScreen = ({navigation}: any) => {
                   backgroundColor: '#fff',
                   paddingHorizontal: 4,
                 }}>
-                image
+                confirmPassword
               </Text>
               <TextInput
-                value={image}
-                onChangeText={text => setImage(text)}
-                placeholder="image..."
+                value={confirmPassword}
+                onChangeText={text => setConfirmPassword(text)}
+                placeholder="confirmPassword..."
                 placeholderTextColor={'grey'}
                 style={{
                   fontSize: 12,
@@ -233,7 +283,11 @@ const RegisterScreen = ({navigation}: any) => {
             </View>
           </View>
           <TouchableOpacity
-            onPress={handleRegister}
+            onPress={() =>
+              validate()
+                ? registerUser()
+                : Alert.alert('Please enter valid data')
+            }
             activeOpacity={0.8}
             style={{
               justifyContent: 'center',

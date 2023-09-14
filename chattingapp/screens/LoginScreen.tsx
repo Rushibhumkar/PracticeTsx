@@ -7,12 +7,31 @@ import {
   KeyboardAvoidingView,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
+import firestore from '@react-native-firebase/firestore';
 
 const LoginScreen = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const loginUser = () => {
+    firestore()
+      .collection('users')
+      .where('email', '==', email)
+      .get()
+      .then((res: any) => {
+        if (res.docs.length !== 0) {
+          console.log(JSON.stringify(res.docs[0].data()));
+        } else {
+          Alert.alert('User not found');
+        }
+      })
+      .catch((err: any) => {
+        console.log(`can't find data`, err);
+        Alert.alert('User not found');
+      });
+  };
   return (
     <View
       style={{
@@ -129,7 +148,8 @@ const LoginScreen = ({navigation}: any) => {
                 width: 150,
                 alignSelf: 'center',
                 borderRadius: 8,
-              }}>
+              }}
+              onPress={() => loginUser()}>
               <Text style={{color: '#fff', fontSize: 16, fontWeight: 'bold'}}>
                 Login
               </Text>

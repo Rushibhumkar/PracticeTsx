@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import Splash from './screens/Splash';
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -12,11 +13,19 @@ const StackNavigator = () => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-          animation: 'slide_from_right',
         }}
         initialRouteName="Home">
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+        <Stack.Screen name="Splash" component={Splash} />
+        <Stack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
+          options={{animation: 'none'}}
+        />
+        <Stack.Screen
+          name="RegisterScreen"
+          component={RegisterScreen}
+          options={{animation: 'slide_from_right'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
