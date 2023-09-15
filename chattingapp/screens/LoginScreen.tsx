@@ -48,7 +48,7 @@ const LoginScreen = ({navigation}: any) => {
     await AsyncStorate.setItem('NAME', name);
     await AsyncStorate.setItem('EMAIL', email);
     await AsyncStorate.setItem('USERID', userId);
-    navigation.navigate('');
+    navigation.navigate('Main');
   };
   return (
     <View
