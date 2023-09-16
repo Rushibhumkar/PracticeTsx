@@ -13,6 +13,7 @@ const Splash: React.FC = () => {
   }, []);
   const CheckLogin = async () => {
     const id = await AsyncStorage.getItem('USERID');
+    console.log(id);
     if (id !== null) {
       navigation.navigate('Main');
     } else {
