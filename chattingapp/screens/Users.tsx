@@ -11,15 +11,18 @@ import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
 import {useNavigation} from '@react-navigation/native';
-const id = '';
+import Loader from '../components/Loader';
+let id = '';
 const Users = () => {
   const navigation = useNavigation();
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getUsers();
   }, []);
 
   const getUsers = async () => {
+    id = await AsyncStorage.getItem('USERID');
     let tempData = [];
     const email = await AsyncStorage.getItem('EMAIL');
     firestore()
@@ -34,6 +37,7 @@ const Users = () => {
         }
         setUsers(tempData);
         // console.log(JSON.stringify(res.docs[0].data()));
+        setLoading(false);
       });
   };
   return (
@@ -72,6 +76,7 @@ const Users = () => {
           );
         }}
       />
+      <Loader visible={loading} />
     </View>
   );
 };
