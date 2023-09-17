@@ -6,6 +6,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import Splash from './screens/Splash';
 import Main from './screens/Main';
+import Chat from './screens/Chat';
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -26,6 +27,15 @@ const StackNavigator = () => {
           name="RegisterScreen"
           component={RegisterScreen}
           options={{animation: 'slide_from_right'}}
+        />
+        <Stack.Screen
+          name="Chat"
+          component={Chat}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: true,
+            headerTitleAlign: 'center',
+          }}
         />
         <Stack.Screen
           name="Main"
