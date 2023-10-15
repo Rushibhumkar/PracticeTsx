@@ -8,8 +8,9 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
+  Appearance,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import firestore from '@react-native-firebase/firestore';
 import Loader from '../components/Loader';
 import AsyncStorate from '@react-native-async-storage/async-storage';
@@ -50,6 +51,7 @@ const LoginScreen = ({navigation}: any) => {
     await AsyncStorate.setItem('USERID', userId);
     navigation.navigate('Main');
   };
+
   return (
     <View
       style={{

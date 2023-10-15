@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, ToastAndroid, View} from 'react-native';
 import React, {useEffect, useState, useCallback} from 'react';
 import {GiftedChat, InputToolbar, Composer} from 'react-native-gifted-chat';
 import {useRoute} from '@react-navigation/native';
@@ -6,9 +6,6 @@ import firestore from '@react-native-firebase/firestore';
 const Chat = ({data, id}: any) => {
   const route: any = useRoute();
   const [messages, setMessages] = useState([]);
-  // console.log(id);
-  // console.log(data);
-  // console.log(route.params.id + route.params.data.userId);
   useEffect(() => {
     const subscriber = firestore()
       .collection('chats')
