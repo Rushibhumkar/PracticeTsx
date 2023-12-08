@@ -4,7 +4,9 @@ import {Provider} from 'react-redux';
 import MainNavigation from './MainNavigation';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import store from './src/components/foodDelivery/redux/store';
-import StackNavigator from './chattingapp/StackNavigator';
+import ChattingStack from './chattingapp/ChattingStack';
+import ReactHooksStack from './hooksScreens/ReactHooksStack';
+import RootNavigator from './asyStoProject/RootNavigator';
 const App = () => {
   return (
     // <Provider store={store}>
@@ -15,7 +17,8 @@ const App = () => {
     //   </GestureHandlerRootView>
     // </Provider>
     <>
-      <StackNavigator />
+      {/* <ChattingStack /> */}
+      <RootNavigator />
     </>
   );
 };

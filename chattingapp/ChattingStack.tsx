@@ -8,7 +8,7 @@ import Splash from './screens/Splash';
 import Main from './screens/Main';
 import Chat from './screens/Chat';
 
-const StackNavigator = () => {
+const ChattingStack = () => {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
@@ -47,6 +47,6 @@ const StackNavigator = () => {
   );
 };
 
-export default StackNavigator;
+export default ChattingStack;
 
 const styles = StyleSheet.create({});
