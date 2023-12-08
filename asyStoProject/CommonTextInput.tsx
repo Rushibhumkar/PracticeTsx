@@ -7,6 +7,7 @@ type InputProps = {
   keyboardType: string;
   maxLength: number;
   disabled: boolean;
+  valid: any;
 };
 const CommonTextInput = ({
   placeholder,
@@ -15,6 +16,7 @@ const CommonTextInput = ({
   keyboardType,
   maxLength,
   disabled,
+  valid,
 }: InputProps) => {
   return (
     <View
@@ -23,7 +25,7 @@ const CommonTextInput = ({
         height: 50,
         borderWidth: 1,
         borderRadius: 10,
-        borderColor: '#9e9e9e',
+        borderColor: valid ? '#9e9e9e' : 'red',
         marginTop: 10,
       }}>
       <TextInput
