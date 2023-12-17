@@ -6,7 +6,9 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import store from './src/components/foodDelivery/redux/store';
 import ChattingStack from './chattingapp/ChattingStack';
 import ReactHooksStack from './hooksScreens/ReactHooksStack';
-import RootNavigator from './asyStoProject/RootNavigator';
+import RootNavigator from './SocialApp/navigations/RootNavigator';
+import SelectionMain from './SelectionFlatlist/SelectionMain';
+import OtpVerification from './SelectionFlatlist/OtpVerification';
 const App = () => {
   return (
     // <Provider store={store}>
@@ -18,7 +20,9 @@ const App = () => {
     // </Provider>
     <>
       {/* <ChattingStack /> */}
-      <RootNavigator />
+      {/* <RootNavigator /> */}
+      {/* <SelectionMain /> */}
+      <OtpVerification />
     </>
   );
 };

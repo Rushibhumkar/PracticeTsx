@@ -8,13 +8,15 @@ import AddContact from './AddContact';
 import Intro from './Intro';
 import CommonTextInput from './CommonTextInput';
 import Components from './Components';
+import ModalViewComp from './ModalViewComp';
+import RegisterScreen from './RegisterScreen';
 
 const RootNavigator = () => {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Components">
-        <Stack.Screen
+      <Stack.Navigator initialRouteName="RegisterScreen">
+        {/* <Stack.Screen
           component={Components}
           name="Components"
           options={{headerShown: false}}
@@ -22,6 +24,16 @@ const RootNavigator = () => {
         <Stack.Screen
           component={CommonTextInput}
           name="CommonTextInput"
+          options={{headerShown: false}}
+        /> */}
+        <Stack.Screen
+          component={RegisterScreen}
+          name="RegisterScreen"
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={ModalViewComp}
+          name="ModalViewComp"
           options={{headerShown: false}}
         />
         {/* <Stack.Screen
