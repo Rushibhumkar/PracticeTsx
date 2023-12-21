@@ -20,9 +20,9 @@ const App = () => {
     // </Provider>
     <>
       {/* <ChattingStack /> */}
-      {/* <RootNavigator /> */}
+      <RootNavigator />
       {/* <SelectionMain /> */}
-      <OtpVerification />
+      {/* <OtpVerification /> */}
     </>
   );
 };
