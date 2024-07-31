@@ -5,7 +5,6 @@ import {usersData} from './Data';
 const ChildScreen = ({item, index}) => {
   const [selected, setselected] = useState(false);
   const [tempData, setTempData] = useState([]);
-  console.log(tempData);
   return (
     <View
       style={{

@@ -9,6 +9,8 @@ import ReactHooksStack from './hooksScreens/ReactHooksStack';
 import RootNavigator from './SocialApp/navigations/RootNavigator';
 import SelectionMain from './SelectionFlatlist/SelectionMain';
 import OtpVerification from './SelectionFlatlist/OtpVerification';
+import Noti from './src/components/extraaComponent/Noti';
+import RegisterScreen from './asyStoProject/RegisterScreen';
 const App = () => {
   return (
     // <Provider store={store}>
@@ -19,9 +21,11 @@ const App = () => {
     //   </GestureHandlerRootView>
     // </Provider>
     <>
-      {/* <ChattingStack /> */}
-      <RootNavigator />
+      <ChattingStack />
+      {/* <RootNavigator /> */}
+      {/* <Noti /> */}
       {/* <SelectionMain /> */}
+      {/* <RegisterScreen /> */}
       {/* <OtpVerification /> */}
     </>
   );

@@ -162,9 +162,9 @@ const Login = ({navigation}) => {
           }}
           onPress={() => {
             validate();
-            // if (validate()) {
-            //   login();
-            // }
+            if (validate()) {
+              login();
+            }
           }}>
           <Text style={{color: '#fff', fontSize: 18, fontWeight: '600'}}>
             Login

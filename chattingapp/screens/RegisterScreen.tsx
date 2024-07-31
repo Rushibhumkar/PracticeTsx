@@ -62,6 +62,7 @@ const RegisterScreen = ({navigation}: any) => {
 
     return isValid;
   };
+  console.log('validate', validate());
   return (
     <ScrollView
       style={{
@@ -233,7 +234,7 @@ const RegisterScreen = ({navigation}: any) => {
                 onChangeText={text => setPassword(text)}
                 placeholder="Enter password..."
                 placeholderTextColor={'grey'}
-                secureTextEntry={true}
+                // secureTextEntry={true}
                 style={{
                   fontSize: 12,
                   paddingHorizontal: 8,

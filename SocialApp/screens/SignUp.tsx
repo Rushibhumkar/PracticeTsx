@@ -14,7 +14,7 @@ import {THEME_COLOR, THEME_COLOR2} from '../utils/Colors';
 import CustomTextInput from '../components/CustomTextInput';
 import LinearGradient from 'react-native-linear-gradient';
 import Loader from '../components/Loader';
-import {BASE_URL, LOGIN_USER} from '../utils/Strings';
+import {BASE_URL, REGISTER_USER} from '../utils/Strings';
 
 const SignUp = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -93,7 +93,7 @@ const SignUp = ({navigation}) => {
     console.log(email + ' ' + password);
     const myHeaders = new Headers();
     myHeaders.append('Content-type', 'application/json');
-    fetch(BASE_URL + LOGIN_USER, {
+    fetch(BASE_URL + REGISTER_USER, {
       body: {
         emailId: email,
         password: password,

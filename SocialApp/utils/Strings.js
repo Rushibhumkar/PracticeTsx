@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://bronze-lemming-fez.cyclic.app/';
+export const BASE_URL = 'http://localhost:8200/socialapp/api/';
 
 export const REGISTER_USER = 'auth/register';
 
